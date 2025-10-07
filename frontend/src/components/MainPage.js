@@ -4,7 +4,7 @@ import PixelBlast from "./PixelBlast";
 
 function MainPage() {
     return (
-        <main>
+        <main className="main_main_page">
             <PixelBlast variant="circle" pixelSize={6} color="#1DC469" patternScale={7} patternDensity={1.2}
                 pixelSizeJitter={2} enableRipples rippleSpeed={0.4} rippleThickness={0.12} rippleIntensityScale={1.5}
                 liquid={false} liquidStrength={0.12} liquidRadius={1.2} liquidWobbleSpeed={5} speed={0.6}
