@@ -1,16 +1,16 @@
-import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack'
+import {HeaderButton, HeaderLink} from './Button'
 
-function Header() {
+const Header = () => {
+    const home_btn = HeaderLink(HeaderButton("Home"), '/');
+    const about_btn = HeaderLink(HeaderButton("About"), '/about');
     return (
         <header>
             <nav>
                 <span className='title_nav'>👾 Space Web</span>
                 <Stack direction="row" spacing={5}>
-                    <Button style={{ fontSize: '18px', fontFamily: 'MiniPC_bold', 
-                        borderRadius: "20px" }} href="/" color="black" >Home</Button>
-                    <Button style={{ fontSize: '18px', fontFamily: 'MiniPC_bold', 
-                        borderRadius: "20px" }} href="/about" color="black" >About</Button>
+                    { home_btn }
+                    { about_btn }
                 </Stack>
             </nav>
         </header>
