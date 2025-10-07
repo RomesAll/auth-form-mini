@@ -26,8 +26,8 @@ body{
 }
 
 header{
-    height: 10vh;
-    min-height: 100px;
+    height: 7vh;
+    /* min-height: 69px; */
     position: relative;
     display: flex;
     align-items: center;
@@ -37,8 +37,6 @@ header{
 nav {    
     border-radius: 60px;
     overflow: hidden;
-    padding-top: 13px;
-    padding-bottom: 13px;
     min-width: 450px;
     position: absolute;
     z-index: 2;
@@ -50,7 +48,7 @@ nav {
 }
 
 main {
-    height: 80vh;
+    height: 86vh;
     min-height: 500px;
     position: relative;
     display: flex;
@@ -88,5 +86,5 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 10vh;
+    height: 7vh;
 }
