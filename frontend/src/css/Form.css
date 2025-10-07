@@ -1,0 +1,17 @@
+.main_form_page {
+    background-color: aqua;
+    min-width: 330px;
+    height: 86vh;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* align-items: center; */
+}
+
+.main_form_page article {
+    background-color: brown;
+    padding: 100px;
+    margin: 20px;
+    border-radius: 20px;
+}
