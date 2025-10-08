@@ -5,6 +5,10 @@ import Footer from './Footer';
 import PixelBlast from "./PixelBlast";
 import {SignInButton, SignUpButton} from './Button'
 import Stack from '@mui/material/Stack';
+import AuthForm from './DialogAuth'
+import RegForm from './DialogReg'
+import Button from '@mui/material/Button';
+
 
 const FormPage = () => {
     const background = (<PixelBlast variant="circle" pixelSize={6} color="#1DC469" patternScale={7} patternDensity={1.2}
@@ -23,11 +27,13 @@ const FormPage = () => {
                     <div className='auth_form'>
                         <h1>Complete the authentication process</h1>
                         <div className='form_btn_container'>
-                            <span>Sign in</span> <SignInButton /> 
-                            <span>or up</span><SignUpButton />
+                            <span>Sign in</span> <AuthForm />
+                            <span>or up</span> <RegForm />
                         </div>
                         <p>How does it work? We use a JWT token for authentication and authorization</p>
                         <p>How many users are already registered: 0 users</p>
+                        {/* <p>Welcome Roman</p>
+                        <p><Button style={{ borderRadius: "50px", width: "90%" }} variant="contained" color="success">Let's start</Button></p> */}
                     </div>
                 </article>
             </main>

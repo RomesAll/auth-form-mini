@@ -12,9 +12,9 @@ const HeaderLink = (button, to) => {
     return <Link style={{ textDecoration: 'none', color: 'black' }} to={to}>{ button }</Link>
 }
 
-const SignInButton = () => {
+const SignInButton = (handleClickOpen) => {
     return (
-        <IconButton aria-label="SignInButton" color="primary">
+        <IconButton aria-label="SignInButton" color="primary" onClick={handleClickOpen}>
             <FingerprintIcon />
         </IconButton>
     );
