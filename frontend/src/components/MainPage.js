@@ -1,6 +1,13 @@
 import Stack from "@mui/material/Stack";
 import PixelBlast from "./PixelBlast";
-import {HeaderButton, HeaderLink} from './Button'
+import {HeaderButton, HeaderLink} from './Button';
+import React from "react";
+import Header from './Header';
+import Footer from './Footer';
+
+const element = document.getElementById('root');  
+element.appendChild(document.createElement("p"));
+element.textContent = 'syka'
 
 const MainPage = () => {
 
@@ -10,25 +17,29 @@ const MainPage = () => {
                 edgeFade={0.25} transparent />);
     const github_btn = HeaderLink(HeaderButton("GitHub"), 'https://github.com/RomesAll/auth-form-mini');
     const continue_btn = HeaderLink(HeaderButton("Continue"), '/auth');
-
+        
     return (
-        <main className="main_main_page">
+        <div style={{ width: '100vw', height: '100vh', position: 'relative'}}>
             { background }
-            <article>
-                <h1>Hello evryone 😸</h1>
-                <span>Welcome to my portfolio website. 
-                    It was created to showcase my skills in building Fullstack applications and completing a web technology course at a university. 
-                    The technology stack includes React, Python, Fastapi, Git, Docker, Nginx, PostgreSQL. 
-                    You can view the codebase in my GitHub profile or continue.
-                </span>
-                <div>
-                    <Stack style={{ marginTop:'40px' }} direction="row" spacing={10}>
-                        {github_btn}
-                        {continue_btn}
-                    </Stack>
-                </div>
-            </article>
-        </main>
+             <Header />
+            <main className="main_main_page">
+                <article>
+                    <h1>Hello evryone 😸</h1>
+                    <span>Welcome to my portfolio website. 
+                        It was created to showcase my skills in building Fullstack applications and completing a web technology course at a university. 
+                        The technology stack includes React, Python, Fastapi, Git, Docker, Nginx, PostgreSQL. 
+                        You can view the codebase in my GitHub profile or continue.
+                    </span>
+                    <div>
+                        <Stack style={{ marginTop:'40px' }} direction="row" spacing={10}>
+                            {github_btn}
+                            {continue_btn}
+                        </Stack>
+                    </div>
+                </article>
+            </main>
+            <Footer />
+        </div>
     );
 }
 
