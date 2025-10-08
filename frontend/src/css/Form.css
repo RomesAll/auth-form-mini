@@ -10,10 +10,42 @@
 }
 
 .main_form_page article {
-    background-color: brown;
-    height: 60%;
-    /* width: 25%; */
-    padding: 20px;
-    margin: 20px;
+    /* background-color: brown; */
+    height: 70%;
+    width: 20%;
+    padding: 20px; /* Внутренний отступ, хватит путать 👺 */
+    margin: 20px; /* Внешний отступ, хватит путать 👺 */
     border-radius: 20px;
+    min-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth_form {
+    /* background-color: rgb(111, 255, 0); */
+    border-radius: 20px;
+    height: 75%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.form_btn_container{
+    /* background-color: bisque; */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.main_form_page article h1 {
+    /* background-color: aquamarine; */
+    text-align: center;
+}
+
+.main_form_page article p {
+    /* background-color: antiquewhite; */
+    text-align: center;
 }

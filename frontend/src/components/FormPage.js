@@ -3,6 +3,8 @@ import AstronautScene from './AstronautScene'
 import Header from './Header';
 import Footer from './Footer';
 import PixelBlast from "./PixelBlast";
+import {SignInButton, SignUpButton} from './Button'
+import Stack from '@mui/material/Stack';
 
 const FormPage = () => {
     const background = (<PixelBlast variant="circle" pixelSize={6} color="#1DC469" patternScale={7} patternDensity={1.2}
@@ -12,17 +14,21 @@ const FormPage = () => {
 
     return (
         <div style={{ width: '100vw', height: '100vh', position: 'relative'}}>
-            { background }
             <Header />
             <main className="main_form_page">
                 <article> 
                     <AstronautScene /> 
                 </article>
                 <article>
-                    <p>sdafasdfsdsfgsdfgsdfsdfgsdfgd</p>
-                    <p>sdaflksdfoasd</p>
-                    <button>dsafsdf</button>
-                    <button>sdfxcvz</button>
+                    <div className='auth_form'>
+                        <h1>Complete the authentication process</h1>
+                        <div className='form_btn_container'>
+                            <span>Sign in</span> <SignInButton /> 
+                            <span>or up</span><SignUpButton />
+                        </div>
+                        <p>How does it work? We use a JWT token for authentication and authorization</p>
+                        <p>How many users are already registered: 0 users</p>
+                    </div>
                 </article>
             </main>
             <Footer />
