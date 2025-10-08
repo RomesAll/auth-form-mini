@@ -32,8 +32,8 @@ const FormPage = () => {
                         </div>
                         <p>How does it work? We use a JWT token for authentication and authorization</p>
                         <p>How many users are already registered: 0 users</p>
-                        {/* <p>Welcome Roman</p>
-                        <p><Button style={{ borderRadius: "50px", width: "90%" }} variant="contained" color="success">Let's start</Button></p> */}
+                        <p>Welcome Roman</p>
+                        <p><Button style={{ borderRadius: "50px", width: "90%" }} variant="contained" color="success">Let's start</Button></p>
                     </div>
                 </article>
             </main>
