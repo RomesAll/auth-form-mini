@@ -35,12 +35,12 @@ export default function RegForm() {
   return (
     <React.Fragment>
 
-        <IconButton aria-label="SignInButton" color="primary" onClick={handleClickOpen}>
-            <FingerprintIcon />
-        </IconButton>
+      <IconButton aria-label="SignInButton" onClick={handleClickOpen}>
+          <FingerprintIcon />
+      </IconButton>
       
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Registration</DialogTitle>
+        <DialogTitle color='black'>Registration</DialogTitle>
         <DialogContent>
           <DialogContentText>
             Before you access the website, fill in the form fields and register.
@@ -70,10 +70,10 @@ export default function RegForm() {
             <TextField
               required
               margin="dense"
-              id="old_id"
-              name="old"
-              label="How old are you"
-              type="number"
+              id="password_id"
+              name="password"
+              label="Password"
+              type="password"
               fullWidth
               variant="standard"
             />

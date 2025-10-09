@@ -1,7 +1,7 @@
 const Footer = () => {
     return (
         <footer>
-            <span>👾 Beskokotov Roman :// All rights reserved / 2025</span>
+            <span>@ Beskokotov Roman :// All rights reserved / 2025</span>
         </footer>
     );
 }

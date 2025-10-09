@@ -35,12 +35,12 @@ export default function AuthForm() {
   return (
     <React.Fragment>
 
-        <IconButton aria-label="SignInButton" color="primary" onClick={handleClickOpen}>
+        <IconButton aria-label="SignInButton" onClick={handleClickOpen}>
             <FingerprintIcon />
         </IconButton>
       
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Authentification</DialogTitle>
+      <Dialog open={open} onClose={handleClose} >
+        <DialogTitle color='black' >Authentification</DialogTitle>
         <DialogContent>
           <DialogContentText>
             To use the resources of our website, enter your email and username. 
@@ -51,20 +51,20 @@ export default function AuthForm() {
               autoFocus
               required
               margin="dense"
-              id="email_id"
-              name="email"
-              label="Email Address"
-              type="email"
+              id="username_id"
+              name="username"
+              label="Username"
+              type="text"
               fullWidth
               variant="standard"
             />
             <TextField
               required
               margin="dense"
-              id="username_id"
-              name="username"
-              label="Username"
-              type="text"
+              id="password_id"
+              name="password"
+              label="Password"
+              type="password"
               fullWidth
               variant="standard"
             />

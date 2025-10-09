@@ -11,9 +11,11 @@ const AstronautScene = () => {
             <directionalLight
                 position={[ -5, 5, 5]}
             />
-            <group position={[ 0, -1.5, 0]}>
-                <Model />
-            </group>
+            <Suspense fallback={null}>
+                <group position={[ 0, -1.5, 0]}>
+                    <Model />
+                </group>
+            </Suspense>
         </Canvas>
     );
 }
