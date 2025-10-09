@@ -1,8 +1,8 @@
-import Header from './Header';
 import MainPage from './MainPage';
-import Footer from './Footer';
 import FormPage from './FormPage';
 import { Routes, Route } from 'react-router-dom'
+import Header from './Header';
+import Footer from './Footer';
 import '../css/App.css';
 
 const App = () => {

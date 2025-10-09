@@ -1,20 +1,28 @@
 @font-face {
-    font-family: 'MiniPC_bold';
-    src: url('../fonts/alsschlangesans-bold.otf');
+    font-family: 'SpaceMono-Bold';
+    src: url('../fonts/Space_Mono/SpaceMono-Bold.ttf');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'MiniPC_light';
-    src: url('../fonts/alsschlangesans.otf');
+    font-family: 'SpaceMono-Regular';
+    src: url('../fonts/Space_Mono/SpaceMono-Regular.ttf');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'SpaceMono-Italic';
+    src: url('../fonts/Space_Mono/SpaceMono-Italic.ttf');
     font-weight: normal;
     font-style: normal;
 }
 
 * {
-    font-family: 'MiniPC_bold';
-    font-size: 21px;
+    font-family: 'SpaceMono-Regular';
+    color: white;
+    font-size: 20px;
     padding: 0;
     margin: 0;
     overflow-y: auto;
@@ -22,7 +30,12 @@
 }
 
 body{
-    background-color: whitesmoke;
+    background-color: #343d46;
+    background-color: #343d46;
+    /* background-color: #2d478e; */
+    /* background-color: #1a3580; */
+    /* background-color: #000050; */
+    /* background-color: #27163c; */
 }
 
 header{
@@ -33,7 +46,7 @@ header{
     justify-content: center;
 }
 
-nav {    
+nav {
     border-radius: 60px;
     overflow: hidden;
     min-width: 450px;
@@ -62,8 +75,6 @@ nav {
     border: 0px solid rgba(255, 255, 255, 0.2);
     border-radius: 50px;
     width: 40%;
-    height: 20vh;
-    min-height: 300px;
     min-width: 500px;
     padding: 20px;
     position: absolute;
@@ -75,10 +86,12 @@ nav {
     justify-content: center;
     text-align: center;
     margin-top: 7%;
+
+    transition: all 0.3s ease 0s;
 }
 
-.main_main_page article h1 {
-    margin-bottom: 30px;
+.main_main_page article:hover {
+    transform: translateY(-5px);
 }
 
 footer {

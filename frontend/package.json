@@ -5,7 +5,12 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.1",
+    "@mediapipe/tasks-vision": "^0.10.22-rc.20250304",
+    "@mui/icons-material": "^7.3.4",
     "@mui/material": "^7.3.4",
+    "@react-three/drei": "^10.7.6",
+    "@react-three/fiber": "^9.3.0",
+    "@react-three/gltfjsx": "^4.3.4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.0",
@@ -16,7 +21,9 @@
     "react-router-dom": "^7.9.3",
     "react-scripts": "5.0.1",
     "three": "^0.180.0",
-    "web-vitals": "^2.1.4"
+    "three-stdlib": "^2.36.0",
+    "web-vitals": "^2.1.4",
+    "yoga-layout": "^3.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,5 +48,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/three": "^0.180.0"
   }
 }

@@ -1,17 +1,53 @@
 .main_form_page {
-    background-color: aqua;
     min-width: 330px;
     height: 86vh;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    /* align-items: center; */
+    align-items: center;
 }
 
 .main_form_page article {
-    background-color: brown;
-    padding: 100px;
+    height: 70%;
+    min-height: 560px;
+    width: 23%;
+    padding: 20px;
     margin: 20px;
     border-radius: 20px;
+    min-width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease 0s;
 }
+
+.main_form_page article:hover{
+    transform: translateY(-15px);
+}
+
+.form_p{
+    padding: 10px;
+    background-color: #1a7d75;
+    border-radius: 20px;
+}
+
+.auth_form {
+    border-radius: 20px;
+    height: 75%;
+    padding: 20px;
+    /* min-height: 500px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    border: 0px solid rgba(255, 255, 255, 0.2);
+    border-radius: 40px;
+}
+
+/* .auth_form:hover {
+    background-color: #1a7d75;
+} */
