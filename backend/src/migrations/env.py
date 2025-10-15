@@ -5,10 +5,8 @@ from sqlalchemy import pool
 
 from alembic import context
 
-
-from core import settings, Base
+from core import Base, settings
 from models import UserORM
-
 
 # this is the Alembic Config object, which provides
 # access to the values within the .ini file in use.
