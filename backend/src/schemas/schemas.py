@@ -13,6 +13,10 @@ class UsersAddDTO(BaseModel):
             'password': self.password
         }
     
+class UserLoginDTO(BaseModel):
+    username: str
+    password: str
+
 class UsersDTO(UsersAddDTO):
     id: int
     def get_attrs(self):
