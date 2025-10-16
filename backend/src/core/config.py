@@ -18,17 +18,19 @@ class DataBase(ConfigBase):
         '''Функция для вывода строки подключения к базе данных'''
         return f'postgresql+asyncpg://{self.POSTGRES_USER}:{self.POSTGRES_PASSWORD}@{self.POSTGRES_HOST}:{self.POSTGRES_PORT}/{self.POSTGRES_DB}'
 
-class Authx(BaseSettings):
+class AuthBaseConfig(BaseSettings):
     '''Класс с конфигурацией token JWT auth'''
     config: AuthXConfig = AuthXConfig()
     config.JWT_ACCESS_COOKIE_NAME = 'access_token'
     config.JWT_SECRET_KEY = 'SECRET'
     config.JWT_TOKEN_LOCATION = ['cookies']
     security: AuthX = AuthX(config=config)
-
+    
+    
 class Settings(BaseSettings):
     '''Класс для хранение конфигурации бд и token JWT auth'''
     database: DataBase = DataBase()
-    authx: Authx = Authx()
-
+    auth: AuthBaseConfig = AuthBaseConfig()
+    
+    
 settings = Settings()

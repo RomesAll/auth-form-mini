@@ -5,8 +5,9 @@ class UsersAddDTO(BaseModel):
     username: str
     email: EmailStr
     password: str
+    role: str = 'user'
     def get_attrs(self):
-        return { 'username': self.username, 'email': self.email, 'password': self.password }
+        return { 'username': self.username, 'email': self.email, 'password': self.password, 'role': self.role}
     
 class UsersDTO(UsersAddDTO):
     '''Pydantic схема для вывода существующего пользователя'''
