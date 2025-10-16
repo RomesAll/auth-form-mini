@@ -1,3 +1,3 @@
-from .config import settings #, config, security
+from .config import settings
 from .database import Base
 from .service import UsersService
