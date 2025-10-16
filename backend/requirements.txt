@@ -13,3 +13,4 @@ sqlalchemy==2.0.20
 asyncpg
 psycopg==3.1.10
 psycopg-binary==3.1.12
+authx
