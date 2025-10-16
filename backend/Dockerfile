@@ -3,11 +3,9 @@ RUN groupadd -r groupfastapi && useradd -r -g groupfastapi user
 RUN pip install --upgrade pip
 ENV PYTHONUNBUFFERED=1
 WORKDIR /fastapi-app
-RUN mkdir ./backend
-COPY requirements.txt ./backend
-COPY .env ./backend
-RUN pip install --no-cache-dir -r ./backend/requirements.txt
-COPY . ./backend
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+COPY . .
 EXPOSE 8000
 USER user
-CMD [ "python", "backend/src/main.py" ]
+CMD [ "python", "src/main.py" ]
