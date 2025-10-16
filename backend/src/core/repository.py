@@ -1,3 +1,4 @@
+from asyncpg import InvalidCatalogNameError
 from .database import session_factory
 from models import UserORM
 from sqlalchemy import select
@@ -14,8 +15,10 @@ class UsersDAO:
                 return res_query.scalar_one()
         except NoResultFound as exc:
             return HTTPException(status_code=401, detail='Incorrect login or password')
+        except InvalidCatalogNameError as exc:
+            return HTTPException(status_code=503, detail='Service Unavailable')
         except Exception as exc:
-            return exc
+            return HTTPException(status_code=500, detail=f'Internal Server Error')
 
     @classmethod
     async def dao_select_users(cls):
@@ -29,8 +32,10 @@ class UsersDAO:
                 return orm_objects
         except NoResultFound as exc:
             return HTTPException(status_code=406, detail='No content found')
+        except InvalidCatalogNameError as exc:
+            return HTTPException(status_code=503, detail='Service Unavailable')
         except Exception as exc:
-            return exc
+            return HTTPException(status_code=500, detail='Internal Server Error')
         
     @classmethod
     async def dao_create_new_user(cls, model_orm):
@@ -41,8 +46,10 @@ class UsersDAO:
                 result = model_orm.username
                 await session.commit()
                 return result
+        except InvalidCatalogNameError as exc:
+            return HTTPException(status_code=503, detail='Service Unavailable')
         except Exception as exc:
-            return HTTPException(status_code=400, detail=exc.args[0])
+            return HTTPException(status_code=500, detail='Internal Server Error')
 
     @classmethod
     async def dao_delete_user(cls, id: int):
@@ -56,5 +63,7 @@ class UsersDAO:
                 return id
         except HTTPException as exc:
             return exc
+        except InvalidCatalogNameError as exc:
+            return HTTPException(status_code=503, detail='Service Unavailable')
         except Exception as exc:
-            return exc
+            return HTTPException(status_code=500, detail='Internal Server Error')
