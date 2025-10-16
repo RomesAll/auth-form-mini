@@ -5,15 +5,21 @@ from models import *
 class UsersService:
     @classmethod
     async def service_get_user(cls, credential: UserLoginDTO):
-        orm_model = await UsersDAO.dao_get_user(credential)
-        dto_model = UsersDTO.model_validate(orm_model, from_attributes=True)
-        return dto_model
+        try:
+            orm_model = await UsersDAO.dao_get_user(credential)
+            dto_model = UsersDTO.model_validate(orm_model, from_attributes=True)
+            return dto_model
+        except:
+            return orm_model
 
     @classmethod
     async def service_select_users(cls):
-        orm_model = await UsersDAO.dao_select_users()
-        dto_model = [UsersDTO.model_validate(row, from_attributes=True) for row in orm_model]
-        return dto_model
+        try:
+            orm_model = await UsersDAO.dao_select_users()
+            dto_model = [UsersDTO.model_validate(row, from_attributes=True) for row in orm_model]
+            return dto_model
+        except:
+            return orm_model
 
     @classmethod
     async def service_create_new_user(cls, dto_model: UsersAddDTO):
