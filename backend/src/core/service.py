@@ -10,7 +10,7 @@ class UsersService:
             dto_model = UsersDTO.model_validate(orm_model, from_attributes=True)
             return dto_model
         except:
-            return None
+            return orm_model
 
     @classmethod
     async def service_select_users(cls):
@@ -19,21 +19,15 @@ class UsersService:
             dto_model = [UsersDTO.model_validate(row, from_attributes=True) for row in orm_model]
             return dto_model
         except:
-            return None
+            return orm_model
 
     @classmethod
     async def service_create_new_user(cls, dto_model: UsersAddDTO):
-        try:
-            orm_model = UserORM(**dto_model.get_attrs())
-            result = await UsersDAO.dao_create_new_user(orm_model)
-            return result
-        except:
-            return None
+        orm_model = UserORM(**dto_model.get_attrs())
+        result = await UsersDAO.dao_create_new_user(orm_model)
+        return result
     
     @classmethod
     async def service_delete_user(cls, id: int):
-        try:
-            result = await UsersDAO.dao_delete_user(id)
-            return result
-        except:
-            return None
+        result = await UsersDAO.dao_delete_user(id)
+        return result
