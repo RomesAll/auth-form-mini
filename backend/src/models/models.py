@@ -1,5 +1,4 @@
-from sqlalchemy.orm import mapped_column, Mapped, relationship
-from typing import Annotated
+from sqlalchemy.orm import mapped_column, Mapped
 from core import Base
 from enum import Enum
 
