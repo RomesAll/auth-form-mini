@@ -10,10 +10,8 @@ const App = () => {
         <div style={{ width: '100vw', height: '100vh', position: 'relative'}}>
             <Header />
             <Routes>
-                <Route path='/' element={<MainPage />}/>
-                <Route path='/auth' element={<FormPage />}/>
-                <Route path='/about' element={<MainPage />}/>
-                <Route path='*' element={<MainPage />}/>
+                <Route path="/" element={<MainPage />}/>
+                <Route path="/auth" element={<FormPage />}/>
             </Routes>
             <Footer />
         </div>

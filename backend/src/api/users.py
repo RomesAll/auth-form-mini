@@ -8,7 +8,8 @@ router = APIRouter()
 def access_token_required(request: Request):
     '''Функция проверки токена на корректность'''
     try:
-        payload = jwt.decode(request.cookies.get(settings.auth.config.JWT_ACCESS_COOKIE_NAME), settings.auth.config.JWT_SECRET_KEY, algorithms=[settings.auth.config.JWT_ALGORITHM])  
+        payload = jwt.decode(request.cookies.get(settings.auth_config.JWT_ACCESS_COOKIE_NAME), 
+                             settings.auth_config.JWT_SECRET_KEY, algorithms=['HS256'])  
         return payload  
     except jwt.ExpiredSignatureError:  
         raise HTTPException(status_code=401, detail="Token has expired")  
@@ -33,8 +34,8 @@ async def registration_users(user_info: UsersAddDTO):
 async def login_users(credential: UserLoginDTO, response: Response):
     user = await UsersService.service_get_user(credential)
     if isinstance(user, UsersDTO):
-        token = settings.auth.security.create_access_token(uid=f'{user.id} {user.role}')
-        response.set_cookie(settings.auth.config.JWT_ACCESS_COOKIE_NAME, token)
+        token = settings.auth.create_access_token(uid=f'{user.id} {user.role}')
+        response.set_cookie(settings.auth_config.JWT_ACCESS_COOKIE_NAME, token)
         return token
     raise user
 
