@@ -1,6 +1,6 @@
 from asyncpg import InvalidCatalogNameError
 from .database import session_factory
-from models import UserORM
+from models import *
 from sqlalchemy import select
 from sqlalchemy.exc import NoResultFound, IntegrityError
 from fastapi import HTTPException

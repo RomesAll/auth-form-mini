@@ -7,9 +7,9 @@ class UsersService:
     async def service_get_user(cls, credential: UserLoginDTO):
         try:
             orm_model = await UsersDAO.dao_get_user(credential)
-            dto_model = UsersDTO.model_validate(orm_model, from_attributes=True)
+            dto_model = UsersDTO(id=orm_model.id, username=orm_model.username, email=orm_model.email, password=orm_model.password, role=str(orm_model.role.value))
             return dto_model
-        except:
+        except Exception as exc:
             return orm_model
 
     @classmethod

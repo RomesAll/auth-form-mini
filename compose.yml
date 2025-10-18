@@ -1,0 +1,61 @@
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: psgr
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - dbnet
+
+  adminer:
+    image: adminer
+    container_name: adminer
+    ports:
+      - "8080:8080"
+    networks:
+      - dbnet
+    depends_on:
+      - postgres
+    links:
+      - "postgres:db"
+
+  space_web_back:
+    build: ./backend
+    image: space_web_back
+    container_name: space_web_back
+    command: "python src/main.py"
+    restart: always
+    links:
+      - "postgres:dbps"
+    networks:
+      - dbnet
+    volumes:
+      - ./backend:/fastapi-app
+    depends_on:
+      - postgres
+
+  space_web_front:
+    build: ./frontend
+    image: space_web_front
+    container_name: space_web_front
+    restart: always
+    networks:
+      - dbnet
+    volumes:
+      - ./frontend:/app
+      - ./frontend/nginx:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+    depends_on:
+      - space_web_back
+
+networks:
+  dbnet:
+    driver: bridge
+
+volumes:
+  postgres-data:
