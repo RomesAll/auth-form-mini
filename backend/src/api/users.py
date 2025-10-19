@@ -28,6 +28,13 @@ async def select_users():
         raise users
     return users
 
+@router.get('/count', summary='Вывести кол-во пользователей')
+async def select_count_users():
+    users = await UsersService.service_select_users()
+    if isinstance(users, HTTPException):
+        raise users
+    return len(users)
+
 @router.post('/registrations', summary='Регистрация пользователя')
 async def registration_users(data = Body()):
     username = await UsersService.service_create_new_user(UsersAddDTO(username=data.get('username'), email=data.get('email'), password=data.get('password')))
