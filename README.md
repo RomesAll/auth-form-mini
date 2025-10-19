@@ -1,8 +1,6 @@
 <h1>Демонстрация работы</h1>
 
-<video width="320" height="240" controls>
-  <source src="demo.mp4" type="video/mp4">
-</video>
+https://github.com/user-attachments/assets/cc7f95d3-7643-44c7-9869-d1037f28e36e
 
 <h1>Инструкция для запуска на локальной машине</h1>
 
@@ -23,7 +21,7 @@
 
 <img width="1450" height="491" alt="image" src="https://github.com/user-attachments/assets/a2d853c4-639f-4aa7-9d5b-cad9d7920c18" />
 
-**Шаг 4**: Контейнеры запущенны, теперь нужно выполнить миграцию для того, чтобы в бд создались таблицы (в нашем случае одна таблица users). Для это нужно зайти в контейнер с fastapi сервисом <code>docker exec -it space_web_back bash</code>:
+**Шаг 4**: контейнеры запущенны, теперь нужно выполнить миграцию для того, чтобы в бд создались таблицы (в нашем случае одна таблица users). Для это нужно зайти в контейнер с fastapi сервисом <code>docker exec -it space_web_back bash</code>:
 
 <img width="641" height="62" alt="image" src="https://github.com/user-attachments/assets/6e460bca-0b3c-4b20-88b1-3a25c0a18a45" />
 
@@ -37,5 +35,7 @@
 
 На этом все.
 
-<h1>Инструкция по работе с веб приложением</h1>
+<h1>API</h1>
+
+<img width="1466" height="507" alt="image" src="https://github.com/user-attachments/assets/0ea9a77b-a1f7-4415-a1a3-7b2d514a7246" />
 
