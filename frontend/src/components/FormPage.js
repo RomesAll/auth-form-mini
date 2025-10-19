@@ -1,18 +1,10 @@
 import '../css/Form.css'
 import AstronautScene from './AstronautScene'
-import Header from './Header';
-import Footer from './Footer';
-import PixelBlast from "./PixelBlast";
-import {SignInButton, SignUpButton} from './Button'
-import Stack from '@mui/material/Stack';
 import AuthForm from './DialogAuth'
 import RegForm from './DialogReg'
-import Button from '@mui/material/Button';
-// import { StarsBackground } from './StarsBack';
 import { useEffect, useState } from 'react';
 
 const FormPage = () => {
-    const background = null;
     const [count_user, setCount] = useState(null);
     document.body.style.backgroundImage = "url('./Simple_Shiny.svg')";
 
