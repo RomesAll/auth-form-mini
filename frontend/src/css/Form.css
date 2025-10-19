@@ -19,14 +19,17 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.model {
     transition: all 0.3s ease 0s;
 }
 
-.main_form_page article:hover{
+.model:hover{
     transform: translateY(-15px);
 }
 
-.form_p{
+.form_title{
     padding: 10px;
     background-color: #1a7d75;
     border-radius: 20px;
@@ -47,7 +50,3 @@
     border: 0px solid rgba(255, 255, 255, 0.2);
     border-radius: 40px;
 }
-
-/* .auth_form:hover {
-    background-color: #1a7d75;
-} */

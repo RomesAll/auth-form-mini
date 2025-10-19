@@ -33,7 +33,7 @@ async def select_count_users():
     users = await UsersService.service_select_users()
     if isinstance(users, HTTPException):
         raise users
-    return len(users)
+    return {'detail': len(users)}
 
 @router.post('/registrations', summary='Регистрация пользователя')
 async def registration_users(data = Body()):
