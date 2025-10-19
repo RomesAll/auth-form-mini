@@ -18,7 +18,7 @@ class UsersDAO:
         except InvalidCatalogNameError as exc:
             return HTTPException(status_code=503, detail='Service Unavailable')
         except Exception as exc:
-            return HTTPException(status_code=500, detail=f'Internal Server Error')
+            return HTTPException(status_code=500, detail='Internal Server Error')
 
     @classmethod
     async def dao_select_users(cls):
@@ -46,6 +46,11 @@ class UsersDAO:
                 result = model_orm.username
                 await session.commit()
                 return result
+        except IntegrityError as exc:
+            parse = str(exc.args[0])
+            message_error = str(exc.args[0][parse.find('Key'):])
+            message_error = message_error.replace('Key', 'Error')
+            return HTTPException(status_code=400, detail=message_error)
         except InvalidCatalogNameError as exc:
             return HTTPException(status_code=503, detail='Service Unavailable')
         except Exception as exc:

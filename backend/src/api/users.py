@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Request, Response, Depends, HTTPException
+from fastapi import APIRouter, Request, Response, Depends, HTTPException, Form, Body
 import jwt
 from schemas import *
 from core import UsersService
@@ -16,6 +16,11 @@ def access_token_required(request: Request):
     except jwt.InvalidTokenError:  
         raise HTTPException(status_code=401, detail="Invalid token")  
 
+@router.get('/username', summary='Получить username авторизированного пользователя')
+async def get_username(payload = Depends(access_token_required)):
+    username = str(payload.get('sub')).split()[1]
+    return {"username": username}
+
 @router.get('/all', summary='Вывести всех пользователей', dependencies=[Depends(access_token_required)])
 async def select_users():
     users = await UsersService.service_select_users()
@@ -23,20 +28,28 @@ async def select_users():
         raise users
     return users
 
+@router.get('/count', summary='Вывести кол-во пользователей')
+async def select_count_users():
+    users = await UsersService.service_select_users()
+    if isinstance(users, HTTPException):
+        raise users
+    return {'detail': len(users)}
+
 @router.post('/registrations', summary='Регистрация пользователя')
-async def registration_users(user_info: UsersAddDTO):
-    username = await UsersService.service_create_new_user(user_info)
+async def registration_users(data = Body()):
+    username = await UsersService.service_create_new_user(UsersAddDTO(username=data.get('username'), email=data.get('email'), password=data.get('password')))
     if not isinstance(username, HTTPException):
         return {'detail': f'User {username} has been successfully registered'}   
     raise username
 
 @router.post('/login', summary='Авторизация пользователя')
-async def login_users(credential: UserLoginDTO, response: Response):
-    user = await UsersService.service_get_user(credential)
+async def login_users(response: Response, data = Body()):
+    print(data)
+    user = await UsersService.service_get_user(UserLoginDTO(username=data.get('username'), password=data.get('password')))
     if isinstance(user, UsersDTO):
-        token = settings.auth.create_access_token(uid=f'{user.id} {user.role}')
+        token = settings.auth.create_access_token(uid=f'{user.id} {user.username} {user.role}')
         response.set_cookie(settings.auth_config.JWT_ACCESS_COOKIE_NAME, token)
-        return token
+        return {'detail': 'You have successfully logged in', 'username': user.username, 'email': user.email}
     raise user
 
 @router.delete('/delete/{id_user}', summary='Удалить пользователя по id')

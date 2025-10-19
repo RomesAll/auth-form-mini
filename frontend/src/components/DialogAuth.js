@@ -9,32 +9,68 @@ import DialogTitle from '@mui/material/DialogTitle';
 import {SignInButton, SignUpButton} from './Button'
 import IconButton from '@mui/material/IconButton';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
+import { useEffect, useState } from 'react';
 
 export default function AuthForm() {
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
-    console.log('aaaa')
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
+  const [message, setMessage] = useState(null);
+  var result_message = null;
+  const [username, setUsername] = useState(null);
+  const [email, setEmail] = useState(null);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    const formJson = Object.fromEntries(formData.entries());
-    const email = formJson.email;
-    console.log(email);
-    /* Тут отправляем запрос на сервер (не забыть) */
-    handleClose();
+    const formJson = Object.fromEntries(formData);
+    const data = formJson;
+    
+    fetch("/api/v1/users/login", {
+      method: "POST", 
+      headers: { "Accept": "application/json", "Content-Type": "application/json" }, 
+      body: JSON.stringify(data)})
+    .then((response) => {
+        return response.json();
+    })
+    .then((json) => {
+        setMessage(json.detail);
+        if (json.username){
+          setUsername(json.username);
+        }
+        else{
+          setUsername(data.username);
+        }
+        if (json.email){
+          setEmail(json.email);
+        }
+        else{
+          setEmail('Not found');
+        }
+    })
+    .catch ( error => {
+        console.log(error);
+    });
   };
+
+  if (message) {
+      result_message = (
+      <DialogContentText> 
+        <DialogContentText color='black'> Message: {message} </DialogContentText>
+        <DialogContentText color='black'> Username: {username} </DialogContentText>
+        <DialogContentText color='black'> Email: {email} </DialogContentText>
+      </DialogContentText>);
+  }
 
   return (
     <React.Fragment>
-
         <IconButton aria-label="SignInButton" onClick={handleClickOpen}>
             <FingerprintIcon />
         </IconButton>
@@ -45,7 +81,8 @@ export default function AuthForm() {
           <DialogContentText>
             To use the resources of our website, enter your email and username. 
             If you have not visited this website before, you need to register.
-          </DialogContentText>
+          </DialogContentText> 
+          {result_message}
           <form onSubmit={handleSubmit} id="subscription-form">
             <TextField
               autoFocus

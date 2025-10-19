@@ -8,6 +8,7 @@ import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
 import {SignInButton, SignUpButton} from './Button'
 import IconButton from '@mui/material/IconButton';
+import { useEffect, useState } from 'react';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';
 
 export default function RegForm() {
@@ -22,15 +23,34 @@ export default function RegForm() {
     setOpen(false);
   };
 
+
+  const [message, setMessage] = useState(null);
+  var result_message = null;
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const formJson = Object.fromEntries(formData.entries());
-    const email = formJson.email;
-    console.log(email);
-    /* Тут отправляем запрос на сервер (не забыть) */
-    handleClose();
+    const data = formJson;
+    
+    fetch("/api/v1/users/registrations", {
+          method: "POST", 
+          headers: { "Accept": "application/json", "Content-Type": "application/json" }, 
+          body: JSON.stringify(data)})
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => {
+            setMessage(json.detail);
+        })
+        .catch ( error => {
+            console.log(error);
+        });
   };
+
+  if (message) {
+      result_message = <DialogContentText color='black'> Message: {message} </DialogContentText>;
+  }
 
   return (
     <React.Fragment>
@@ -44,6 +64,7 @@ export default function RegForm() {
         <DialogContent>
           <DialogContentText>
             Before you access the website, fill in the form fields and register.
+            {result_message}
           </DialogContentText>
           <form onSubmit={handleSubmit} id="subscription-form">
             <TextField
