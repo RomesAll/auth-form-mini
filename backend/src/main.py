@@ -2,7 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from api import router as router_users
 import uvicorn
-
+#, allow_credentials=True, allow_methods=["*"], allow_headers=["*"]
 app = FastAPI()
 app.add_middleware(CORSMiddleware, allow_origins=["*"])
 app.include_router(router=router_users, prefix='/v1/users', tags=['Пользователи'])

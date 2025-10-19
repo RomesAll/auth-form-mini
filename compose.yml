@@ -49,7 +49,7 @@ services:
       - ./frontend:/app
       - ./frontend/nginx:/etc/nginx/conf.d
     ports:
-      - "80:80"
+      - "85:80"
     depends_on:
       - space_web_back
 

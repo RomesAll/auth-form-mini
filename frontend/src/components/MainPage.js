@@ -6,6 +6,7 @@ import Header from './Header';
 import Footer from './Footer';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { useEffect, useState } from 'react';
 
 const MainPage = () => {
     document.body.style.backgroundImage = null;
@@ -23,12 +24,30 @@ const MainPage = () => {
     const DockerLable = <span style={{ color: '#2974ffff' }}>Docker</span>
     const NginxLable = <span style={{ color: '#18a10bff' }}>Nginx</span>
     const PostgreSQLLable = <span style={{ color: '#236cf3ff' }}> PostgreSQL</span>
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        fetch("/api/v1/users/username")
+        .then(response => {
+            console.log('response:', response);
+            if (response.ok){
+                return response.json();
+            }
+            else {
+                setUser('everyone');
+            }
+        })
+        .then(json => {
+            console.log('json:', json);
+            setUser(json.username);
+        })
+    });
 
     return (
         <main className="main_main_page">
             {background}
             <article>
-                <span style={{ marginBottom: '30px', fontFamily: 'SpaceMono-Bold'}}>Hello evryone 👋</span>
+                <span style={{ marginBottom: '30px'}}>Hello {user} 👋</span>
                 <span>Welcome to my portfolio website.
                     It was created to showcase my skills in building Fullstack applications and completing a web technology course at a university. 
                     The technology stack includes {ReactLable}, {PythonLable}, {FastapiLable}, {GitLable}, {DockerLable}, {NginxLable}, {PostgreSQLLable}. 
