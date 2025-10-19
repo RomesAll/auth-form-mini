@@ -21,8 +21,10 @@ async def get_username(payload = Depends(access_token_required)):
     username = str(payload.get('sub')).split()[1]
     return {"username": username}
 
-@router.get('/all', summary='Вывести всех пользователей', dependencies=[Depends(access_token_required)])
-async def select_users():
+@router.get('/all', summary='Вывести всех пользователей')
+async def select_users(payload = Depends(access_token_required)):
+    if payload.get('sub').find('admin') == -1:
+        raise HTTPException(status_code=403, detail='Forbidden')
     users = await UsersService.service_select_users()
     if isinstance(users, HTTPException):
         raise users
@@ -44,7 +46,6 @@ async def registration_users(data = Body()):
 
 @router.post('/login', summary='Авторизация пользователя')
 async def login_users(response: Response, data = Body()):
-    print(data)
     user = await UsersService.service_get_user(UserLoginDTO(username=data.get('username'), password=data.get('password')))
     if isinstance(user, UsersDTO):
         token = settings.auth.create_access_token(uid=f'{user.id} {user.username} {user.role}')

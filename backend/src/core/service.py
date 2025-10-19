@@ -18,8 +18,8 @@ class UsersService:
             orm_model = await UsersDAO.dao_select_users()
             dto_model = [UsersDTO.model_validate(row, from_attributes=True) for row in orm_model]
             return dto_model
-        except:
-            return orm_model
+        except Exception as exc:
+            return {'detail': str(exc)}
 
     @classmethod
     async def service_create_new_user(cls, dto_model: UsersAddDTO):

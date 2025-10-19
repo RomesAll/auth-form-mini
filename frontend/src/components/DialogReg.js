@@ -6,7 +6,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
-import {SignInButton, SignUpButton} from './Button'
 import IconButton from '@mui/material/IconButton';
 import { useEffect, useState } from 'react';
 import FingerprintIcon from '@mui/icons-material/Fingerprint';

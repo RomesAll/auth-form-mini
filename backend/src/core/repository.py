@@ -10,7 +10,7 @@ class UsersDAO:
     async def dao_get_user(cls, dto_model):
         try:
             async with session_factory() as session:
-                query = select(UserORM).filter(UserORM.username==dto_model.username, UserORM.password==dto_model.password).limit(1)
+                query = select(UserORM).filter(UserORM.username==dto_model.username, UserORM.password==dto_model.password.get_secret_value()).limit(1)
                 res_query = await session.execute(query)
                 return res_query.scalar_one()
         except NoResultFound as exc:
