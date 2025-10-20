@@ -17,7 +17,7 @@ https://github.com/user-attachments/assets/cc7f95d3-7643-44c7-9869-d1037f28e36e
 
 <img width="803" height="69" alt="image" src="https://github.com/user-attachments/assets/5fcc049a-e604-4f24-b507-edc6fc95be43" />
 
-Если небудет ошибок то вы увидите примерно это:
+Если не будет ошибок, то вы увидите примерно это:
 
 <img width="1450" height="491" alt="image" src="https://github.com/user-attachments/assets/a2d853c4-639f-4aa7-9d5b-cad9d7920c18" />
 
@@ -33,7 +33,7 @@ https://github.com/user-attachments/assets/cc7f95d3-7643-44c7-9869-d1037f28e36e
 
 <img width="844" height="124" alt="image" src="https://github.com/user-attachments/assets/157c7f90-3f5e-4b02-821d-6783d78539bc" />
 
-На этом все.
+Далее нужно просто в адресной строке браузера ввести http://127.0.0.1:85. На этом все.
 
 <h1>API</h1>
 
