@@ -41,3 +41,4 @@ https://195.225.111.62/api/docs
 
 <img width="1466" height="507" alt="image" src="https://github.com/user-attachments/assets/0ea9a77b-a1f7-4415-a1a3-7b2d514a7246" />
 
+<h1>Пожалуйста, не дудосьти сервер я старался 🥹</h1>
