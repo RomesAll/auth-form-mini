@@ -4,7 +4,7 @@ https://github.com/user-attachments/assets/cc7f95d3-7643-44c7-9869-d1037f28e36e
 
 <h1>Инструкция для запуска на локальной машине</h1>
 
-**Шаг 1**: клонировать репозиторий <code>git@github.com:RomesAll/auth-form-mini.git</code>
+**Шаг 1**: клонировать репозиторий <code>[git@github.com:RomesAll/auth-form-mini.git](https://github.com/RomesAll/auth-form-mini.git)</code>
 
 **Шаг 2**: добавить env файлы для конфигурации бд, токенов
 
