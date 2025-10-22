@@ -33,7 +33,7 @@ https://github.com/user-attachments/assets/cc7f95d3-7643-44c7-9869-d1037f28e36e
 
 <img width="844" height="124" alt="image" src="https://github.com/user-attachments/assets/157c7f90-3f5e-4b02-821d-6783d78539bc" />
 
-Далее нужно просто в адресной строке браузера ввести http://127.0.0.1:85. На этом все.
+Далее нужно просто в адресной строке браузера ввести http://127.0.0.1:80. На этом все.
 
 <h1>API</h1>
 
